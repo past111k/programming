@@ -1,3 +1,4 @@
+a)
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -5,8 +6,25 @@ int main()
 {
     float a, x;
     cout <<"Enter variable value";
-    cin >> a; //Вводим значение переменной
-    x = sqrt (2 * a + sin(abs(3 * a)) / 3.56);
-    cout << "function value is " << x << "\n"; //Ответ
+    cin >> a; // Вводим значение переменной
+    x = sqrt (2 * a + sin(abs(3 * a)) / 3.56); // Задаем формулу вычисления значения функции 
+    cout << "function value is " << x << "\n"; // Ответ
     return 0;
 }
+
+
+б)
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    float y, x;
+    cout <<"Enter variable value";
+    cin >> x; // Вводим значение переменной
+    y = sin(3.2 + sqrt(1+x) / abs(5 * x)); // Задаем формулу вычисления значения функции 
+    cout << "function value is " << y << "\n"; //Ответ
+    return 0;
+}
+
+
