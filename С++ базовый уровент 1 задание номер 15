@@ -1,0 +1,12 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    float a, x;
+    cout <<"Enter variable value";
+    cin >> a; //Вводим значение переменной
+    x = sqrt (2 * a + sin(abs(3 * a)) / 3.56);
+    cout << "function value is " << x << "\n"; //Ответ
+    return 0;
+}
