@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int y, x;
+  cout <<"Enter variable value"; 
+  cin >> x; //Вводим значение переменной
+  y = 7 * x * x - 3 * x + 6; // Задаем формулу вычисления значения функции 
+  cout << "function value is " << y << "\n"; //Ответ
+        cin.get();
+  return 0;
+}
