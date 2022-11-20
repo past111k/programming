@@ -1,0 +1,12 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main()
+{
+    float a, y;
+    cout <<"Enter variable value";
+    cin >> a; //Вводим значение переменной
+    y = a * a + 1 / sqrt(a*a +1); //Задаем формулу вычисления значения функции
+    cout << "Function value is " << y << "\n"; //Ответ
+  return 0;
+}
