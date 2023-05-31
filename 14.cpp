@@ -1,24 +1,37 @@
-//урок 1,задание14
+//самостоятельная продвинутая 4, 14
+
 #include <iostream>
-#include <cmath>
 using namespace std;
-int main()
+
+int main() 
 {
-    float a;
-    int f;
-    float m;
-    cout << "Vvedite ugol";
-    cin >> a;
-    cout << "Vvesite massu";
-    cin >> m;
-    cout << "Esli telo skolzit po ploskosti, to napishite 1, a esli v sostoyanii pokoya, to 2";
-    cin >> f;
-    if (f == 1)
-    {
-        cout << m * 9.8 * cos(a) * tan(a);
-    }
-    else
-    {
-        cout << m * 9.8 * sin(a);
-    }
+    const int SIZE = 5; 
+    double coeffs[SIZE]; 
+    double x; 
+    char choice; 
+
+    do {
+        cout << "Введите коэффициенты полинома (от a0 до a" << SIZE-1 << "):\n";
+        for (int i = 0; i < SIZE; i++) 
+        {
+            cin >> coeffs[i]; 
+        }
+
+        cout << "Введите значение аргумента x: ";
+        cin >> x;
+
+        double result = 0; 
+        for (int i = 0; i < SIZE; i++) 
+        {
+            result += coeffs[i] * pow(x, i); 
+        }
+
+        cout << "Значение полинома для x = " << x << ": " << result << endl;
+
+        cout << "Хотите продолжить вычисления? (y/n): ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
 }
+

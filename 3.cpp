@@ -1,41 +1,51 @@
-//самостоятельная продвинутый 1, №3
+// сам раб 4 прод 3
 
 #include <iostream>
+using namespace std;
 
-#include <cmath>
+int main()
+{
+    int rows, cols;
+    cout << "Enter the number of rows and columns: ";
+    cin >> rows >> cols;
 
-const double g = 9.8; // Ускорение свободного падения (м/с^2)
+    
+    int matrix[rows][cols];
 
-void calculateInitialVelocityAndAngle(double H, double L, double& V, double& alpha) {
+   
+     for(int i = 0; i < rows; ++i)
+        for(int j = 0; j < cols; ++j)
+        {
+            cout << "Enter element (" << i + 1<< "," << j + 1<< ") : ";
+            cin >> matrix[i][j];
+        }
 
-double alphaRad = atan(4 * H / L); // Угол альфа в радианах
+  
+   cout<<"\nOriginal Matrix:\n";
+      for (int i=0;i<rows;++i){
+         for (int j=0;j<cols;++j){
+             cout<<matrix[i][j]<<" ";  
+         }
+       cout<<"\n";
+      }
 
-alpha = alphaRad * 180 / M_PI; // Угол альфа в градусах
+ 
+   int transpose[cols][rows];
+   
+      for (int i=0;i<cols;++i){    
+        for (int j=0;j<rows;++j){    
+          transpose[i][j]=matrix[j][i];    
+        }        
+     }    
 
-V = sqrt(g * L / sin(2 * alphaRad));
+     
+   cout<<"\nThe transposed Matrix is:\n";      
+    for(int k = 0;k < cols;k++){       
+       for(int l = 0;l < rows;l++){           
+          cout<<transpose[k] [l]<<" ";       
+        }          
+      cout<<"\n";     
+    } 
 
-}
-
-int main() {
-
-double H, L;
-
-std::cout << "Введите максимальную высоту подъема (H): ";
-
-std::cin >> H;
-
-std::cout << "Введите дальность полета (L): ";
-
-std::cin >> L;
-
-double V, alpha;
-
-calculateInitialVelocityAndAngle(H, L, V, alpha);
-
-std::cout << "Начальная скорость (V): " << V << " м/с" << std::endl;
-
-std::cout << "Угол альфа: " << alpha << " градусов" << std::endl;
-
-return 0;
-
+return(1);
 }

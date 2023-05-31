@@ -1,4 +1,4 @@
-//сам раб 3 прод, №1
+//сам раб 4 прод №1
 
 #include <iostream>
 
@@ -10,27 +10,16 @@ int main()
 
 {
 
-double x;
+int a1, a2, a3;
 
-const int n = 10;
+cout « "Enter components of vector a: ";
 
-double sum = 0;
+cin » a1 » a2 » a3;
 
-cout « "Введите значение аргумента x: ";
+double mod = sqrt(pow(a1, 2) + pow(a2, 2) + pow(a3, 2));
 
-cin » x;
-
-for (int m = 0; m <= n; m++)
-
-{
-
-sum += pow(-1, m) * pow(x, 2*m) / tgamma(2*m + 1);
-
-}
-
-cout « "Значение косинуса: " « sum « endl;
+cout « "The modulus of vector a is: " « mod « endl;
 
 return 0;
 
 }
-
