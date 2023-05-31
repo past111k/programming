@@ -1,18 +1,27 @@
-// сам.прод 10
-#include <iostream>
-#include<math.h>
-using namespace std;
-int main(){
-    double G = 6.672e-11; // гравитационная постоянная
-    double M = 5.96e24; // масса Земли
-    double R = 6.37e6; // радиус Земли
-    double h; // высота над поверхностью Земли
-    double g; // ускорение свободного падения
-    cout << "Введите высоту над поверхностью Земли (в метрах): "; // выводим сообщение на экран
-    cin >> h; // вводим значение высоты над поверхностью Земли
-g = G * M / pow((R + h), 2); // вычисляем ускорение свободного падения
+//Самостоятельная работа 3 продвинутая задача 10
 
-cout<< "Ускорение свободного падения на высоте "<<h<<" метров над поверхностью Земли: "<< g<<" м/с^2"; // выводим результат на экран
+#include <iostream>
+
+#include <cmath>
+
+int main() {
+
+int upperLimit;
+
+std::cout << "Enter the upper limit: ";
+
+std::cin >> upperLimit;
+
+double product = 1.0;
+
+for (int n = 1; n <= upperLimit; n++) {
+
+product *= pow(cos(2 * n + 1), 2);
+
+}
+
+std::cout << "Product: " << product << std::endl;
 
 return 0;
+
 }

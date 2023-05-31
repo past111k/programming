@@ -1,16 +1,21 @@
-// Урок 1 продвинутая с/р задание 5
+// самостоятельная работа номер 3 продвинутый номер 5
+
 
 #include <iostream>
-#include <math.h>
-
+#include <cmath>
 using namespace std;
 
 int main() {
-double H, U, g = 9.81; 
-cout << "Введите высоту H и скорость U самолета: ";
-cin >> H >> U;
-double T = sqrt(2 * H / g); 
-double S = U * T; 
-cout << "Подлетное расстояние до объекта: " << S << endl;
-return 0;
+    double x;
+    const int N = 10; 
+    cout << "Введите значение x (-1 < x < 1): ";
+    cin >> x;
+    double sum = 0.0;
+    double term = x;
+    for (int n = 1; n <= N; n++) {
+        sum += term;
+        term *= -x * n / (n + 1);
+    }
+    cout << "ln(1 + " << x << ") = " << sum << endl;
+    return 0;
 }

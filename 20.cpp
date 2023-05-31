@@ -1,25 +1,38 @@
-//Сам раб 1 продвинутый(20)
-
+//сам раб 3 прод 20
 
 #include <iostream>
 #include <cmath>
+#include <random>
 
 using namespace std;
 
-int main() {
-    double n, p, p1, q, res;
-    cout << "Введите количество подводных лодок n: ";
-    cin >> n;
-    cout << "Введите вероятность попадания торпеды в авианосец p: ";
-    cin >> p;
-    cout << "Введите вероятность затопления демаскированной подводной лодки кораблями охранения p1: ";
-    cin >> p1;
+double f(double x, double y) 
+{
+    if (y <= x * x && y <= 1 && x * x + y * y >= 0) 
+        return 1;
+    else
+        return 0;
+}
 
-    q = (1 - p) * (1 - p1);
-    res = p * (1 - p1) * ((1 - pow(q, n)) / (1 - q));
+int main()
+{
+    const double exactValue = 88.0 / 105.0; 
+    const int N = 1000000; 
+    double V = 0; 
 
-    cout << "Вероятность затопления авианосца и ухода подводных лодок без потерь равна: " << res << endl;
+    random_device rd; 
+    mt19937 gen(rd());
+    uniform_real_distribution<> dis(-1, 1); 
+    for (int i = 0; i < N; i++)
+    {
+        double x = dis(gen);
+        double y = dis(gen);
+        V += f(x, y);
+    }
+
+    V *= 4.0 / N;
+    cout << "Оценка объема: " << V << endl;
+    cout << "Точное значение: " << exactValue << endl;
 
     return 0;
 }
-

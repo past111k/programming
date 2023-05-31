@@ -1,23 +1,36 @@
-// Самостоятельная продвинутый 1, задача 1
+//сам раб 3 прод, №1
 
 #include <iostream>
+
 #include <cmath>
+
 using namespace std;
 
-int main() {
-    double V, T, a;
-    const double g = 9.8; 
-    cout << "Введите начальную скорость V: ";
-    cin >> V;
-    cout << "Введите время полета T: ";
-    cin >> T;
+int main()
 
-    a = asin(g * T / (2 * V));
+{
 
-    a = a * 180 / M_PI;
+double x;
 
-    cout << "Угол броска: " << a << " градусов." << endl;
+const int n = 10;
 
-    return 0;
+double sum = 0;
+
+cout « "Введите значение аргумента x: ";
+
+cin » x;
+
+for (int m = 0; m <= n; m++)
+
+{
+
+sum += pow(-1, m) * pow(x, 2*m) / tgamma(2*m + 1);
+
+}
+
+cout « "Значение косинуса: " « sum « endl;
+
+return 0;
+
 }
 

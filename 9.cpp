@@ -1,31 +1,22 @@
-//сам раб1, прод №9
 
+//сам раб 3 прод 9
 #include <iostream>
-
 #include <cmath>
-
 using namespace std;
 
-int main()
-
+int main() 
 {
+    int n;
+    double product = 1.0;
 
-double h, u, s, t;
+    cout << "Введите верхнюю границу произведения: ";
+    cin >> n;
 
-cout « "Введите высоту полета самолета (м): ";
+    for (int i = 1; i <= n; i++) {
+        product *= cos((2*i+1)*M_PI/2);
+    }
 
-cin » h;
+    cout << "Произведение: " << product << endl;
 
-cout « "Введите скорость самолета (м/с): ";
-
-cin » u;
-
-t = sqrt(2 * h / 9); // вычисляем время полета бомбы
-
-s = u * t; // вычисляем расстояние до объекта
-
-cout « "Подлетное расстояние до объекта (м): " « s « endl;
-
-return 0;
-
+    return 0;
 }
