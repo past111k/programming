@@ -1,62 +1,17 @@
-//1--продвинутый 16
+// Самостоятельная базовый 4,  №16
 
-
-#include <cmath>
 #include <iostream>
-using namespace std;
-template <class T>
-bool SafeInput(const char * sMsg, T &val);
- 
-int main()
-{
-    setlocale(LC_ALL,"RUS");
-    double P1 = 0;
-    double P2 = 0;
-    double V1 = 0;
-    double V2 = 0;
-    while(true)
-    {
-        if(!SafeInput("P2 = ", P2))
-            cout<<"Ошибка ввода"<<endl;
-        else
-        if(P2 <= 0)
-            cout<<"P2 должно быть положительно и не равно 0"<<endl;
-        else
-        if(!SafeInput("V2 = ", V2))
-            cout<<"Ошибка ввода"<<endl;
-        else
-        if(V2 <= 0)
-            cout<<"V2 должно быть положительно и не равно 0"<<endl;
-        else
-       if(!SafeInput("P1 = ", P1))
-            cout<<"Ошибка ввода"<<endl;
-        else
-       if(!SafeInput("V1 = ", V1))
-            cout<<"Ошибка ввода"<<endl;
-        else
-            ((P2*V2-P1*V1)< 0 || (P2-P1)< 0)
-            ?
-            cout<<"V = "<<("Объем не может быть отрицательным")
-            :
-            cout<<"V = "<<((P2*V2-P1*V1)/(P2-P1));
-            cout<<endl;
+
+int main() {
+    const int n = 5; 
+    int arr[n][n] = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}}; // инициализация массива
+
+    int product = 1;
+    for (int i = 0; i < n; i++) {
+        product *= arr[0][i];
     }
+
+    std::cout << "Произведение элементов первой строки: " << product << std::endl;
+
     return 0;
 }
- 
- 
-template <class T>
-bool SafeInput(const char * sMsg, T &val)
-{
-    bool bInput = true;
-    cout<<sMsg;
-    if(!(cin>>val))
-        bInput = false;
-    if(!bInput)
-    {
-        cin.sync();
-        cin.clear();
-    }
-    return bInput;
-}
-

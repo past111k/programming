@@ -1,25 +1,35 @@
-//сам работа 1 продвинут (15)
-
-
+// 4 урок прод. задание 15
 #include <iostream>
-#include <cmath>
-
 using namespace std;
 
 int main() {
-    double m, a, u;
-    cout << "Введите массу тела: ";
-    cin >> m;
-    cout << "Введите угол наклона плоскости (в градусах): ";
-    cin >> a;
-    cout << "Введите коэффициент трения тела о плоскость: ";
-    cin >> u;
+    int n; 
+    cout << "Введите степень полинома: ";
+    cin >> n;
 
-   a = a * M_PI / 180.0; 
+    int coef[n+1]; 
+    for (int i = 0; i <= n; i++) {
+        cout << "Введите коэффициент при x^" << i << ": ";
+        cin >> coef[i];
+    }
 
-   double F = tan(a) <= u ? 0 : m * (sin(a) - u*cos(a));
-   
-   cout << "Сила натяжения нити равна: "<< F <<" Н"<< endl;
+    char choice; 
+    do {
+        int x; 
+        cout << "Введите значение аргумента: ";
+        cin >> x;
 
-return 0; 
+        int derivative = 0; 
+        for (int i = 1; i <= n; i++) {
+            derivative += i * coef[i] * pow(x, i-1); 
+            
+        }
+
+        cout << "Значение производной полинома в точке " << x << ": " << derivative << endl;
+
+        cout << "Продолжить работу? (y/n): ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+
+    return 0;
 }

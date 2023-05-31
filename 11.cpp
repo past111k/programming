@@ -1,24 +1,23 @@
-//Сам. раб. 3 прод. №11
+//Сам. раб. 4 прод. №11
 
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-int main() {
-    int A;
-    cout << "Введите число A (>1): ";
-    cin >> A;
-
-    int K = 1;
-    double sum = 1.0; 
-    while (sum <= A) {
-        K++;
-        sum += 1.0 / K;
+const int arrSize = 5; 
+int main() 
+{
+    double arr[arrSize];
+    double sum = 0; 
+    for (int i = 0; i < arrSize; i++) {
+        cout << "Введите элемент " << i + 1 << " массива: ";
+        cin >> arr[i];
+        sum += arr[i]; 
     }
 
-    cout << "Наименьшее число K: " << K << endl;
-    cout << "Сумма 1 + 1/2 + ... + 1/K: " << sum << endl;
+    double mean = sum / arrSize; /
+    cout << "Сумма элементов массива: " << sum << endl;
+    cout << "Среднее значение: " << mean << endl;
 
     return 0;
 }

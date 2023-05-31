@@ -1,38 +1,42 @@
-//сам раб 3 прод 20
+//Задание 20, 4 урок
 
+```
 #include <iostream>
+#include <vector>
 #include <cmath>
-#include <random>
 
 using namespace std;
 
-double f(double x, double y) 
-{
-    if (y <= x * x && y <= 1 && x * x + y * y >= 0) 
-        return 1;
-    else
-        return 0;
-}
-
 int main()
 {
-    const double exactValue = 88.0 / 105.0; 
-    const int N = 1000000; 
-    double V = 0; 
+    int n; 
+    cout << "Введите количество точек: ";
+    cin >> n;
 
-    random_device rd; 
-    mt19937 gen(rd());
-    uniform_real_distribution<> dis(-1, 1); 
-    for (int i = 0; i < N; i++)
-    {
-        double x = dis(gen);
-        double y = dis(gen);
-        V += f(x, y);
+    vector<double> x(n); 
+    vector<double> y(n); 
+
+    cout << "Введите значения x и y:" << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> x[i] >> y[i];
     }
 
-    V *= 4.0 / N;
-    cout << "Оценка объема: " << V << endl;
-    cout << "Точное значение: " << exactValue << endl;
+    double x_mean = 0, y_mean = 0;
+    for (int i = 0; i < n; i++) {
+        x_mean += x[i];
+        y_mean += y[i];
+    }
+    x_mean /= n;
+    y_mean /= n;
+    double a = 0, b = 0;
+    for (int i = 0; i < n; i++) {
+        a += (x[i] - x_mean) * (y[i] - y_mean);
+        b += (x[i] - x_mean) * (x[i] - x_mean);
+    }
+    a /= b;
+    b = y_mean - a * x_mean;
+
+    cout << "Параметры модели: a=" << a << ", b=" << b << endl;
 
     return 0;
 }
