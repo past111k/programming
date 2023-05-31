@@ -1,37 +1,39 @@
-//самостоятельная продвинутая 4, 14
-
+// 5 урок прод. задание 14 
 #include <iostream>
 using namespace std;
 
-int main() 
-{
-    const int SIZE = 5; 
-    double coeffs[SIZE]; 
-    double x; 
+int polynomial(int coef[], int n, int x) {
+    int result = 0;
+    for (int i = 0; i <= n; i++) {
+        result += coef[i] * pow(x, i);
+    }
+    return result;
+}
+
+int main() {
+    int n; 
+    cout << "Введите степень полинома: ";
+    cin >> n;
+
+    int coef[n+1]; 
+    for (int i = 0; i <= n; i++) {
+        cout << "Введите коэффициент при x^" << i << ": ";
+        cin >> coef[i];
+    }
+
     char choice; 
-
     do {
-        cout << "Введите коэффициенты полинома (от a0 до a" << SIZE-1 << "):\n";
-        for (int i = 0; i < SIZE; i++) 
-        {
-            cin >> coeffs[i]; 
-        }
-
-        cout << "Введите значение аргумента x: ";
+        int x; 
+        cout << "Введите значение аргумента: ";
         cin >> x;
 
-        double result = 0; 
-        for (int i = 0; i < SIZE; i++) 
-        {
-            result += coeffs[i] * pow(x, i); 
-        }
+        int value = polynomial(coef, n, x); 
 
-        cout << "Значение полинома для x = " << x << ": " << result << endl;
+        cout << "Значение полинома в точке " << x << ": " << value << endl;
 
-        cout << "Хотите продолжить вычисления? (y/n): ";
+        cout << "Продолжить работу? (y/n): ";
         cin >> choice;
     } while (choice == 'y' || choice == 'Y');
 
     return 0;
 }
-

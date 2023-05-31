@@ -1,35 +1,35 @@
-// 4 урок прод. задание 15
+//Самостоятельная работа 5 продвинутый № 15
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-int main() {
-    int n; 
-    cout << "Введите степень полинома: ";
-    cin >> n;
 
-    int coef[n+1]; 
-    for (int i = 0; i <= n; i++) {
-        cout << "Введите коэффициент при x^" << i << ": ";
-        cin >> coef[i];
-    }
-
-    char choice; 
-    do {
-        int x; 
-        cout << "Введите значение аргумента: ";
-        cin >> x;
-
-        int derivative = 0; 
-        for (int i = 1; i <= n; i++) {
-            derivative += i * coef[i] * pow(x, i-1); 
-            
-        }
-
-        cout << "Значение производной полинома в точке " << x << ": " << derivative << endl;
-
-        cout << "Продолжить работу? (y/n): ";
-        cin >> choice;
-    } while (choice == 'y' || choice == 'Y');
-
-    return 0;
+double derivative(double coeffs[], int n, double x) {
+	double result = 0;
+	for (int i = 1; i < n; i++) {
+		result += i * coeffs[i] * pow(x, i-1);
+	}
+	return result;
 }
+
+int main() {
+	int n;
+	cout << "Enter the degree of the polynomial: ";
+	cin >> n;
+	
+	double coeffs[n];
+	cout << "Enter the coefficients of the polynomial: ";
+	for (int i = 0; i < n; i++) {
+		cin >> coeffs[i];
+	}
+	
+	double x;
+	cout << "Enter the value of x for which to compute the derivative: ";
+	cin >> x;
+	
+	double result = derivative(coeffs, n, x);
+	cout << "The value of the derivative at x = " << x << " is " << result << endl;
+	
+	return 0;
+}
+

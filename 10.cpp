@@ -1,75 +1,57 @@
-//Самостоятельная работа 4 продвинутая задача 10
+//Сам. раб. 5 прод. #10
+
 
 #include <iostream>
+#include <cmath> 
+using namespace std;
 
-#include <vector>
+const int vecSize = 3; 
+double dotProduct(double vec1[], double vec2[]);
+double vectorLength(double vec[]);
+double angleBetweenVectors(double vec1[], double vec2[]);
 
-#include <cmath>
+int main() 
+{
+    double vector1[vecSize], vector2[vecSize];
 
-double calculateCentralMoment(const std::vector<double>& values, const std::vector<double>& probabilities, double mean, int order) {
+     cout << "Введите элементы первого вектора:\n";
+    for (int i = 0; i < vecSize; i++) {
+        cout << "Введите элемент " << i + 1 << ": ";
+        cin >> vector1[i];
+    }
 
-double centralMoment = 0.0;
+    cout << "\nВведите элементы второго вектора:\n";
+    for (int i = 0; i < vecSize; i++) {
+        cout << "Введите элемент " << i + 1 << ": ";
+        cin >> vector2[i];
+    }
+double angle = angleBetweenVectors(vector1, vector2);
 
-int n = values.size();
+    cout << "\nУгол между векторами: " << angle << " радиан" << endl;
 
-for (int i = 0; i < n; i++) {
-
-centralMoment += std::pow((values[i] - mean), order) * probabilities[i];
-
+    return 0;
 }
 
-return centralMoment;
-
+double dotProduct(double vec1[], double vec2[]) {
+    double result = 0;
+    for (int i = 0; i < vecSize; i++) {
+        result += vec1[i] * vec2[i];
+    }
+    return result;
 }
 
-int main() {
-
-// Ввод порядка момента
-
-int order;
-
-std::cout << "Введите порядок момента: ";
-
-std::cin >> order;
-
-// Ввод значений случайной величины и соответствующих вероятностей
-
-int n;
-
-std::cout << "Введите количество значений случайной величины: ";
-
-std::cin >> n;
-
-std::vector<double> values(n);
-
-std::vector<double> probabilities(n);
-
-std::cout << "Введите значения случайной величины и соответствующие вероятности:" << std::endl;
-
-for (int i = 0; i < n; i++) {
-
-std::cin >> values[i] >> probabilities[i];
-
+double vectorLength(double vec[]) {
+    double sum = 0;
+    for (int i = 0; i < vecSize; i++) {
+        sum += vec[i] * vec[i];
+    }
+    return sqrt(sum);
 }
 
-// Вычисление математического ожидания
-
-double mean = 0.0;
-
-for (int i = 0; i < n; i++) {
-
-mean += values[i] * probabilities[i];
-
-}
-
-// Вычисление центрального момента
-
-double centralMoment = calculateCentralMoment(values, probabilities, mean, order);
-
-// Вывод результата
-
-std::cout << "Центральный момент порядка " << order << ": " << centralMoment << std::endl;
-
-return 0;
-
+double angleBetweenVectors(double vec1[], double vec2[]) {
+    double dotProd = dotProduct(vec1, vec2);
+    double vec1Len = vectorLength(vec1);
+    double vec2Len = vectorLength(vec2);
+    double cosAngle = dotProd / (vec1Len * vec2Len);
+    return acos(cosAngle);
 }

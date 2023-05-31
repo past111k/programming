@@ -1,51 +1,44 @@
-// сам раб 4 прод 3
+// сам раб 5 прод 3
 
 #include <iostream>
+
+#include <cmath>
+
 using namespace std;
 
-int main()
-{
-    int rows, cols;
-    cout << "Enter the number of rows and columns: ";
-    cin >> rows >> cols;
+const int MAX_ITERATIONS = 10;
 
-    
-    int matrix[rows][cols];
+double cos(double x) {
 
-   
-     for(int i = 0; i < rows; ++i)
-        for(int j = 0; j < cols; ++j)
-        {
-            cout << "Enter element (" << i + 1<< "," << j + 1<< ") : ";
-            cin >> matrix[i][j];
-        }
+    double result = 1;
 
-  
-   cout<<"\nOriginal Matrix:\n";
-      for (int i=0;i<rows;++i){
-         for (int j=0;j<cols;++j){
-             cout<<matrix[i][j]<<" ";  
-         }
-       cout<<"\n";
-      }
+    double term = 1; 
 
- 
-   int transpose[cols][rows];
-   
-      for (int i=0;i<cols;++i){    
-        for (int j=0;j<rows;++j){    
-          transpose[i][j]=matrix[j][i];    
-        }        
-     }    
+    for (int n = 1; n <= MAX_ITERATIONS; n++) {
 
-     
-   cout<<"\nThe transposed Matrix is:\n";      
-    for(int k = 0;k < cols;k++){       
-       for(int l = 0;l < rows;l++){           
-          cout<<transpose[k] [l]<<" ";       
-        }          
-      cout<<"\n";     
-    } 
+        term *= -1 * x * x / ((2 * n - 1) * (2 * n));
 
-return(1);
+        result += term;
+
+    }
+
+    return result;
+
 }
+
+
+
+int main() {
+
+    double x;
+
+    cout << "Enter x value: ";
+
+    cin >> x;
+
+    cout << "cos(" << x << ") = " << cos(x) << endl;
+
+    return 0;
+
+}
+

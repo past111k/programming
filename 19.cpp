@@ -1,36 +1,45 @@
-// Самостоятельная продвинутый 4, задача 19
+// Урок 5 продвинутая с/р 19
 
 #include <iostream>
-#include <vector>
-#include <cmath>
+#include <math.h>
 
 using namespace std;
+double calc_a(double x[], double y[], int n) {
+double sum_x = 0, sum_y = 0, sum_xy = 0, sum_x2 = 0, a;
+for (int i = 0; i < n; i++) {
+sum_x += x[i];
+sum_y += y[i];
+sum_xy += x[i] * y[i];
+sum_x2 += pow(x[i], 2);
+}
+a = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - pow(sum_x, 2));
+return a;
+}
+double calc_b(double x[], double y[], int n) {
+double sum_x = 0, sum_y = 0, sum_xy = 0, sum_x2 = 0, b;
+for (int i = 0; i < n; i++) {
+sum_x += x[i];
+sum_y += y[i];
+sum_xy += x[i] * y[i];
+sum_x2 += pow(x[i], 2);
+}
+b = (sum_y - calc_a(x, y, n) * sum_x) / n;
+return b;
+}
 
 int main() {
-    vector<double> x, y;
-    double n, sum_x = 0, sum_y = 0, sum_xy = 0, sum_x2 = 0, a, b;
-
-    cout << "Введите количество значений: ";
-    cin >> n;
-
-    for (int i = 0; i < n; i++) {
-        double xi, yi;
-        cout << "Введите значение x" << i+1 << ": ";
-        cin >> xi;
-        cout << "Введите значение y" << i+1 << ": ";
-        cin >> yi;
-        x.push_back(xi);
-        y.push_back(yi);
-        sum_x += xi;
-        sum_y += yi;
-        sum_xy += xi * yi;
-        sum_x2 += pow(xi, 2);
-    }
-
-    b = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - pow(sum_x, 2));
-    a = (sum_y - b * sum_x) / n;
-
-    cout << "Параметры регрессионной модели: a = " << a << ", b = " << b << endl;
-
-    return 0;
+int n;
+cout << "Введите количество точек: ";
+cin >> n;
+double x[n], y[n];
+for (int i = 0; i < n; i++) {
+cout << "Введите координату x" << i + 1 << ": ";
+cin >> x[i];
+cout << "Введите координату y" << i + 1 << ": ";
+cin >> y[i];
+}
+double a = calc_a(x, y, n);
+double b = calc_b(x, y, n);
+cout << "Регрессионная модель: f(x) = " << a << "x + " << b << endl;
+return 0;
 }
